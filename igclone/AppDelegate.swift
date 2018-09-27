@@ -16,8 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Build Home UI in Lieu of Storyboard
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let homeViewController = UIViewController()
+        homeViewController.view.backgroundColor = UIColor.blue
+        window!.rootViewController = homeViewController
+        window!.makeKeyAndVisible()
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
