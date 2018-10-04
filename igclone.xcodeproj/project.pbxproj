@@ -12,6 +12,7 @@
 		E8294ED5215C2515007262CE /* igclone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8294ED3215C2515007262CE /* igclone.xcdatamodeld */; };
 		E8294ED7215C251A007262CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8294ED6215C251A007262CE /* Assets.xcassets */; };
 		E8294EDA215C251A007262CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8294ED8215C251A007262CE /* LaunchScreen.storyboard */; };
+		E8294EEC2165A83C007262CE /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8294EEB2165A83C007262CE /* PhotoViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E8294ED6215C251A007262CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8294ED9215C251A007262CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8294EDB215C251A007262CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8294EEB2165A83C007262CE /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E8294ECC215C2515007262CE /* AppDelegate.swift */,
 				E8294ECE215C2515007262CE /* ViewController.swift */,
+				E8294EEB2165A83C007262CE /* PhotoViewCell.swift */,
 				E8294ED6215C251A007262CE /* Assets.xcassets */,
 				E8294ED8215C251A007262CE /* LaunchScreen.storyboard */,
 				E8294EDB215C251A007262CE /* Info.plist */,
@@ -137,6 +140,7 @@
 				E8294ED5215C2515007262CE /* igclone.xcdatamodeld in Sources */,
 				E8294ECF215C2515007262CE /* ViewController.swift in Sources */,
 				E8294ECD215C2515007262CE /* AppDelegate.swift in Sources */,
+				E8294EEC2165A83C007262CE /* PhotoViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
