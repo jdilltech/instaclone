@@ -10,19 +10,20 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var tableView = UITableView()
-    var tableData = ["Img1", "Img2", "Img3", "Img4"]
+    let tableView = UITableView(frame: .zero, style: .plain)
+    var tableData = ["img1", "img2", "img3", "img4"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView = UITableView(frame: self.view.bounds, style: UITableView.Style.plain)
         tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = .white
+        tableView.register(PhotoViewCell.self, forCellReuseIdentifier: "item")
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
+        installConstraints()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,16 +33,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = tableData[indexPath.row]
-        
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath) as? PhotoViewCell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tableData.count
         
+    }
+    
+    func installConstraints(){
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rowHeight = 600
     }
 
     
