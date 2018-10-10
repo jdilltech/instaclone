@@ -12,5 +12,6 @@ struct ImagePost{
     var photoName : String
     var userName : String
     var numLikes : Int
+    var commenter : String
     var lastComment : String
 }

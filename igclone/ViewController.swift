@@ -12,10 +12,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let tableView = UITableView(frame: .zero, style: .plain)
     let tableData = [
-        ImagePost(photoName: "img1", userName: "jimbojones", numLikes: 25, lastComment: "Well why not?"),
-        ImagePost(photoName: "img2", userName: "dillybilly", numLikes: 37, lastComment: "That's one spicy pickle?"),
-        ImagePost(photoName: "img3", userName: "isthisthingon", numLikes: 225, lastComment: "I don't think it is?"),
-        ImagePost(photoName: "img4", userName: "winnerwinner", numLikes: 57, lastComment: "This is the single greatest pickle situation I have ever seen.  We can never have enough pickles!  Bring on all the pickles!  Did I mention this comment would be loaded with pickles?  Because, pickles!")
+        ImagePost(photoName: "img1", userName: "jimbojones", numLikes: 25, commenter: "jdill", lastComment: "Well why not?"),
+        ImagePost(photoName: "img2", userName: "dillybilly", numLikes: 37, commenter: "notjdill", lastComment: "That's one spicy pickle?"),
+        ImagePost(photoName: "img3", userName: "isthisthingon", numLikes: 225, commenter: "jdill2.0", lastComment: "I don't think it is?"),
+        ImagePost(photoName: "img4", userName: "winnerwinner", numLikes: 57, commenter: "daniel", lastComment: "This is the single greatest pickle situation I have ever seen.  We can never have enough pickles!  Bring on all the pickles!  Did I mention this comment would be loaded with pickles?  Because, pickles!")
     ]
     
     override func viewDidLoad() {
