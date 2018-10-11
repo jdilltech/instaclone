@@ -11,7 +11,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let tableView = UITableView(frame: .zero, style: .plain)
-    var tableData = ["img1", "img2", "img3", "img4"]
+    let tableData = [
+        ImagePost(photoName: "img1", userName: "jimbojones", numLikes: 25, commenter: "jdill", lastComment: "Well why not?"),
+        ImagePost(photoName: "img2", userName: "dillybilly", numLikes: 37, commenter: "notjdill", lastComment: "That's one spicy pickle?"),
+        ImagePost(photoName: "img3", userName: "isthisthingon", numLikes: 225, commenter: "jdill2.0", lastComment: "I don't think it is?"),
+        ImagePost(photoName: "img4", userName: "winnerwinner", numLikes: 57, commenter: "daniel", lastComment: "This is the single greatest pickle situation I have ever seen.  We can never have enough pickles!  Bring on all the pickles!  Did I mention this comment would be loaded with pickles?  Because, pickles!")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +37,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "item", for: indexPath) as? PhotoViewCell
+        cell?.imagePost = tableData[indexPath.row]
         return cell!
     }
     

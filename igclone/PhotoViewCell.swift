@@ -5,35 +5,32 @@
 //  Created by John Dill on 10/3/18.
 //  Copyright © 2018 John Dill. All rights reserved.
 //
-//TESTING NEW .gitignore FILE
 
 import UIKit
 
 class PhotoViewCell: UITableViewCell {
     
-    let photoUserName: UILabel = {
-        let label = UILabel()
-        label.text = "Dilly Pickles"
+    //Owner of uploaded photo
+     var photoUserName: UILabel = {
+        var label = UILabel()
         return label
     }()
     
-    let numLikes: UILabel = {
-        let label = UILabel()
-        label.text = "25 Likes"
+    //Current total number of likes
+    var numLikes: UILabel = {
+        var label = UILabel()
         return label
     }()
     
-    let comment: UILabel = {
+    //Comment on image.  Eventually want this to be an array of 3 most recent comments! (Max 3-5 lines displayed in post), and a 'view all' link to go to a 'Comments View' that shows a scrollable list of all comments on this post
+    lazy var comment: UILabel = {
         let label = UILabel()
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
-        let attributedString = NSMutableAttributedString(string: "somecoolcommenter ", attributes:attrs)
-        let normalString = NSMutableAttributedString(string: "This is the single greatest pickle situation I have ever seen.  We can never have enough pickles!  Bring on all the pickles!  Did I mention this comment would be loaded with pickles?  Because, pickles!")
-        attributedString.append(normalString)
-        label.attributedText = attributedString
+        label.attributedText = self.configureCommentLabel(commenter: "jdill", text: "My Comment")
         label.numberOfLines = 3
         return label
     }()
     
+    //Like button, will want two statuses: Selected/Not-Selected
     let likeButton: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "likeicon"))
         imageView.clipsToBounds = true
@@ -41,6 +38,7 @@ class PhotoViewCell: UITableViewCell {
         return imageView
     }()
     
+    //Comment button, should display small input box to add comments.
     let commentButton: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "commenticon"))
         imageView.clipsToBounds = true
@@ -48,12 +46,25 @@ class PhotoViewCell: UITableViewCell {
         return imageView
     }()
     
-    let photo: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "img1"))
+    //Uploaded image for this post
+    var photo: UIImageView = {
+        var imageView = UIImageView(image: UIImage(named: "img1"))
         imageView.clipsToBounds = true
         imageView.backgroundColor = .white
         return imageView
     }()
+    
+    //Creates and sets params for all items in the imagePost within this cell
+    var imagePost: ImagePost?
+    {
+        didSet {
+            guard let imagePost = imagePost else { return }
+            photo.image = UIImage(named: imagePost.photoName)
+            photoUserName.text = imagePost.userName
+            numLikes.text = "\(imagePost.numLikes)"
+            comment.attributedText = configureCommentLabel(commenter: imagePost.commenter, text: imagePost.lastComment)
+        }
+    }
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -72,6 +83,15 @@ class PhotoViewCell: UITableViewCell {
     //This is required for a custom init
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //Appends 'commenter' in bold font to beginning of their comment.  Eventually pass in comment object to handle this
+    func configureCommentLabel(commenter: String, text: String) -> NSAttributedString {
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
+        let attributedString = NSMutableAttributedString(string: "\(commenter) ", attributes:attrs)
+        let normalString = NSMutableAttributedString(string: text)
+        attributedString.append(normalString)
+        return attributedString
     }
     
     func installConstraints() {
